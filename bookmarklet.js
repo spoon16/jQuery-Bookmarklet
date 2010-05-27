@@ -53,77 +53,78 @@ function __buildForm(f) {
 }
 
 function __initBookmarklet() {
-    __$(document).ready(function () {
-        __log('group', '[%i] initialize bookmarklet', __logId);
-    
-		var container = __$('<div />');
-        var close = __$('<a />');
-        var frame = __$('<iframe />');
-		var form = __$('<form />');
+		__$(document).ready(function () {
+				__log('group', '[%i] initialize bookmarklet', __logId);
+			
+				var container = __$('<div />');
+				var close = __$('<a />');
+				var frame = __$('<iframe />');
+				var form = __$('<form />');
 
-        __log('info', '[%i] remove any existing bookmarklet container', __logId);
-        __$('#' + __containerId).remove();
+				__log('info', '[%i] remove any existing bookmarklet container', __logId);
+				__$('#' + __containerId).remove();
 
-        __log('info', '[%i] render new bookmarklet container', __logId);
-			__$('body').append(
+				__log('info', '[%i] render new bookmarklet container', __logId);
+				__$('body').append(
 					container
-				.attr('id', __containerId)
-				.css({
-					'position': 'fixed',
-					'top': '8px',
-					'right': '8px',
-					'height': '378px',
-					'width': '520px',
-					'background-color': '#FFFFFF',
-					'border': 'solid 5px #B1D715',
-					'z-index': '2147483647',
-					'display': 'none'
-				})
-				.append(
-					close
-						.attr('id', __closeId)
-						.attr('href', 'javascript:void(0);')
-						.css({
-							'border': '2px solid red',
-							'position': 'absolute',
-							'right': '5px',
-							'top': '5px',
-							'width': '50px',
-							'height': '20px'
-						})
-				)
-				.append(
-					frame
-						.attr('name', __frameName)
-						.attr('id', __frameName)
-						.css({
-							'border': '0 none',
-							'margin': '0',
-							'padding': '0',
-							'height': '100%',
-							'width': '100%'
-						})
-						.load(function () {
-							__$('#' + __closeId)
-								.click(function () {
-									__log('info', '[%i] closing bookmarklet', __logId);
-									__$('#' + __containerId).slideUp();
-								});
-							__log('info', '[%i] bookmarklet loaded', __logId);
-							__$('#' + __containerId).show();
-							__log('groupEnd');
-						})
-				)
-				.append(
-					form
-						.attr('method', 'post')
-						.attr('action', 'http://github.com/spoon16/jQuery-Bookmarklet/raw/master/bookmarklet.html')
-						.attr('target', __frameName)
-				)
-        );
+					.attr('id', __containerId)
+					.css({
+						'position': 'fixed',
+						'top': '8px',
+						'right': '8px',
+						'height': '378px',
+						'width': '520px',
+						'background-color': '#FFFFFF',
+						'border': 'solid 5px #B1D715',
+						'z-index': '2147483647',
+						'display': 'none'
+					})
+					.append(
+						close
+							.attr('id', __closeId)
+							.attr('href', 'javascript:void(0);')
+							.css({
+								'border': '2px solid red',
+								'position': 'absolute',
+								'right': '5px',
+								'top': '5px',
+								'width': '50px',
+								'height': '20px'
+							})
+							.text('close') // remove the text if you just want the close to be a hotspot (you can render something under the hotspot in the iframe)
+					)
+					.append(
+						frame
+							.attr('name', __frameName)
+							.attr('id', __frameName)
+							.css({
+								'border': '0 none',
+								'margin': '0',
+								'padding': '0',
+								'height': '100%',
+								'width': '100%'
+							})
+							.load(function () {
+								__$('#' + __closeId)
+									.click(function () {
+										__log('info', '[%i] closing bookmarklet', __logId);
+										__$('#' + __containerId).slideUp();
+									});
+								__log('info', '[%i] bookmarklet loaded', __logId);
+								__$('#' + __containerId).show();
+								__log('groupEnd');
+							})
+					)
+					.append(
+						form
+							.attr('method', 'post')
+							.attr('action', 'http://github.com/spoon16/jQuery-Bookmarklet/raw/master/bookmarklet.html')
+							.attr('target', __frameName)
+					)
+				);
 		
-		__buildForm(form);
-    });
+				__buildForm(form);
+		});
 }
 
 (function (version) {
