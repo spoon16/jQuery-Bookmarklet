@@ -2,7 +2,7 @@
 var __containerId = 'DS___container';
 var __closeId = 'DS___close';
 var __frameName = 'DS__frame';
-var __logId = 'disc.overi.es';
+var __logId = 'jQuery Bookmarklet';
 
 // simple log function that won't throw an exception
 // if a console is not available
@@ -117,7 +117,7 @@ function __initBookmarklet() {
 				.append(
 					form
 						.attr('method', 'post')
-						.attr('action', 'http://localhost:54445/Bookmarklet/')
+						.attr('action', 'http://github.com/spoon16/jQuery-Bookmarklet/raw/master/bookmarklet.html')
 						.attr('target', __frameName)
 				)
         );
