@@ -1,4 +1,4 @@
-﻿//bookmarklet specific variable names
+//bookmarklet specific variable names
 var __containerId = 'DS___container';
 var __closeId = 'DS___close';
 var __frameName = 'DS__frame';
