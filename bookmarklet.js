@@ -7,12 +7,14 @@ var __logId = 'jQuery-Bookmarklet';
 // if a console is not available
 function __log() {
     if (typeof (console) != 'undefined') {
-        var args = Array.prototype.slice.call(arguments); 	//convert args to normal array
-        var type = args[0]; 									//capture the console operation name http://getfirebug.com/wiki/index.php/Console_API
+        var args = Array.prototype.slice.call(arguments); 	    // convert args to normal array
+        var type = args[0]; 									// capture the console operation name http://getfirebug.com/wiki/index.php/Console_API
         if (typeof (console[type]) != 'undefined') {
-            var consoleArgs = args.slice(1 || args.length); 	//remove index 0 from array
+            var consoleArgs = args.slice(1 || args.length); 	// remove index 0 from array
             args.push.apply(args, consoleArgs);
-            console[type].apply(console, consoleArgs); 		//will expand consoleArgs so elements are passed as individual args, splat operator
+            if (typeof (console[type].apply) != 'undefined') {  // internet explorers console won't support using apply this way, so logging will be disabled there
+                console[type].apply(console, consoleArgs); 		// will expand consoleArgs so elements are passed as individual args, splat operator
+            }
         }
     }
 }
@@ -100,6 +102,7 @@ function __initBookmarklet() {
 					frame
 						.attr('name', __frameName)
 						.attr('id', __frameName)
+                        .attr('frameborder', '0')
 						.css({
 						    'border': '0 none',
 						    'margin': '0',
@@ -115,8 +118,8 @@ function __initBookmarklet() {
 				)
 				.append(
 					form
-						.attr('method', 'post')
-						.attr('action', __rootUrl + '/bookmarklet.html') // __rootUrl is defined in the bookmarklet
+						.attr('method', 'get')
+						.attr('action', __rootUrl + '/jQuery-Bookmarklet/bookmarklet.html') // __rootUrl is defined in the bookmarklet
 						.attr('target', __frameName)
 				)
         );

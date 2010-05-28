@@ -33,12 +33,14 @@
     
         <script type="text/javascript">
             function sendMessageToContainer(cmd, val) {
-                var url = '<%= ViewData["url"] %>'; //it's a XSS violation to read parent.location, but we can set it
+                var url = document.location.href.match(/url=([^&]+)/)[1];
+                url = unescape(url);
                 var cmdHash = '#c=' + cmd;
                 if (val) {
                     cmdHash += '&v=' + val;
                 }
-                parent.location = url.replace(/#.*/, '') + cmdHash;
+                var target = url.replace(/#.*/, '') + cmdHash;
+                parent.location = target;
             }
         </script>
     </body>
