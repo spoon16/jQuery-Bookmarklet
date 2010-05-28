@@ -1,1 +1,45 @@
-Hello World!
+<html>
+    <head>
+        <title>jQuery-Bookmarklet Sample</title>
+        <style type="text/css">
+            body
+            {
+                font-family: Verdana;
+            }
+            
+            #closeX 
+            {
+                float: right;
+            }
+            
+            #closeX img
+            {
+                border: none;
+            }
+            
+            #title
+            {
+                color: #AAAAAA;
+                font-size: 13px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div id="title">jQuery-Bookmarklet Sample</div><a id="closeX" href="javascript:sendMessageToContainer('close');"><img src="bookmarklet_close.png" /></a>
+            <div style="clear:both"></div>
+        </div>
+    
+        <script type="text/javascript">
+            function sendMessageToContainer(cmd, val) {
+                var url = '<%= ViewData["url"] %>'; //it's a XSS violation to read parent.location, but we can set it
+                var cmdHash = '#c=' + cmd;
+                if (val) {
+                    cmdHash += '&v=' + val;
+                }
+                parent.location = url.replace(/#.*/, '') + cmdHash;
+            }
+        </script>
+    </body>
+</html>
