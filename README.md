@@ -8,8 +8,7 @@ A simple jQuery bookmarklet that I hope will help others looking to develop a fl
 
 The bookmarklet executes JavaScript that dynamically includes a `<script />` tag in the document.  That script will ensure that jQuery is loaded and enable the bookmarklet to execute script that relies on jQuery.
 
-###Example Bookmarklet
-    <a href="javascript:(function(d,p){if(typeof(__i)!='undefined'){__initBookmarklet();}else{var%20__s=document.createElement('script');__s.type='text/javascript';__s.src='http://'+d+p;document.getElementsByTagName('head')[0].appendChild(__s);__i=true;}})('github.com','/spoon16/jQuery-Bookmarklet/raw/master/bookmarklet.js?'+Math.round(Math.random()*10000000));">bookmarklet</a>
+###[Live Example](http://spoon16.github.com/jQuery-Bookmarklet/)
 
 ##License
 
