@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <title>jQuery Bookmarklet</title>
+</head>
+<body>
+    <p>
+        <a id="bookmarklet">BOOKMARKLET</a>
+    </p>
+    <script type="text/javascript" language="javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript">
+	    var bookmarklet = "javascript:function%20__i(){jQueryBookmarklet.init('1.4.2',__initBookmarklet);};(function(__u,__r){var%20__d=document,__b=__d.body;__rootUrl=__d.location.protocol+'//'+__u;try{if(!__b)throw(0);if(typeof(jQueryBookmarklet)!='undefined'){__i();}else{var%20__s=__d.createElement('script');__s.type='text/javascript';__s.src=__rootUrl+__r;__s.onload=__s.onreadystatechange=function(){if(__s.readyState||__s.readyState=='loaded'||__s.readyState=='complete'){__s.onreadystatechange=null;__i();}else{__i();}};__d.getElementsByTagName('head')[0].appendChild(__s);}}catch(e){alert('Wait%20till%20page%20has%20loaded%20and%20try%20again')}})('spoon16.github.com', '/jQuery-Bookmarklet/bookmarklet.js?'+Math.round(Math.random()*10000000));";
+
+        //set bookmarklet href value
+        $(document).ready(function () {
+            $('#bookmarklet')
+                    .attr('href', bookmarklet)
+                    .click(function (event) {
+                        alert('Drag bookmarklet to your bookmark toolbar to install.');
+                        event.preventDefault();
+                    });
+        });
+    </script>
+</body>
+</html>
