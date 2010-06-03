@@ -158,6 +158,7 @@ jQueryBookmarklet = function() {
 		$: null,
 		init: function(version, loadedCallback) {
 			callback = function(jq){
+				debugger;
 				this.$ = jq;
 				loadedCallback(this.$);
 			};
@@ -166,4 +167,4 @@ jQueryBookmarklet = function() {
 	};
 }();
 
-jQueryBookmarklet.init("1.4.2", function(jq) { debugger; console.log(jq); alert('hello world'); });
+jQueryBookmarklet.init("1.4.2", function(jq) { console.log('hello world'); });
