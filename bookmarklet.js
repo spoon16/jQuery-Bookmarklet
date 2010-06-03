@@ -1,29 +1,23 @@
 //bookmarklet specific variable names
 var __containerId = 'BM___container';
 var __frameName = 'BM__frame';
-var __logId = 'jQuery-Bookmarklet';
 
 // build a form that will be posted to the iframe
 // this allows information from the current page to be passed to
 // the iframe without causing a cross site scripting related
 // unauthorized exception to be thrown
-function __buildForm(f) {
-	__log('group', '[%i] building form', __logId);
-
+function __buildForm($, f) {
 	f.append(
-		__$('<input type="hidden" name="url" />')
+		$('<input type="hidden" name="url" />')
 			.attr('value', window.location)
 	);
 
-	__log('info', '[%i] submitting form to frame', __logId);
 	f.submit();
 
 	__watchForCommands();
-
-	__log('groupEnd');
 }
 
-function __watchForCommands() {
+function __watchForCommands($) {
 	var __detail = location.hash.match(/#c=([^&]+)(?:&v=([^&]+))?/);
 	if (__detail) {
 		var __cmd = __detail[1];
@@ -31,27 +25,22 @@ function __watchForCommands() {
 			var __val = __detail[2];
 		}
 		if (__cmd == 'close') {
-			__log('info', '[%i] closing bookmarklet', __logId);
-			__$('#' + __containerId).slideUp();
+			$('#' + __containerId).slideUp();
 		}
 		location.hash = '#';
 	}
-	setTimeout(__watchForCommands, 200);
+	setTimeout(function() { __watchForCommands($); }, 200);
 }
 
-function __initBookmarklet() {
-	__$(document).ready(function () {
-		__log('group', '[%i] initialize bookmarklet', __logId);
+function __initBookmarklet($) {
+	$(document).ready(function () {
+		var container = $('<div />');
+		var frame = $('<iframe />');
+		var form = $('<form />');
 
-		var container = __$('<div />');
-		var frame = __$('<iframe />');
-		var form = __$('<form />');
+		$('#' + __containerId).remove();
 
-		__log('info', '[%i] remove any existing bookmarklet container', __logId);
-		__$('#' + __containerId).remove();
-
-		__log('info', '[%i] render new bookmarklet container', __logId);
-		__$('body').append(
+		$('body').append(
 			container
 				.attr('id', __containerId)
 				.css({
@@ -79,9 +68,7 @@ function __initBookmarklet() {
 							'width': '100%'
 						})
 						.load(function () {
-							__log('info', '[%i] bookmarklet loaded', __logId);
-							__$('#' + __containerId).show();
-							__log('groupEnd');
+							$('#' + __containerId).show();
 						})
 				)
 				.append(
@@ -92,7 +79,7 @@ function __initBookmarklet() {
 				)
 		);
 
-		__buildForm(form);
+		__buildForm($, form);
 	});
 }
 
@@ -166,4 +153,4 @@ jQueryBookmarklet = function() {
 	};
 }();
 
-jQueryBookmarklet.init("1.4.2", function(jq) { console.log('hello world'); });
+jQueryBookmarklet.init("1.4.2", __initBookmarklet);
