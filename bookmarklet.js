@@ -97,8 +97,8 @@ function __initBookmarklet() {
 }
 
 jQueryBookmarklet = function() {
-	var callback,
-	var tag,
+	var callback;
+	var tag;
 		
 	var log = function() {
 		if (typeof (console) != 'undefined') {
@@ -112,7 +112,7 @@ jQueryBookmarklet = function() {
 				}
 			}
 		}
-	},
+	}
 
 	var ensurejQuery : function(version) {
 		log('group', 'ensure jQuery');
@@ -140,7 +140,7 @@ jQueryBookmarklet = function() {
 			log('info', 'jQuery %v found', jq.fn.jquery);
 			execLoadedCallback(jq);
 		}
-	},
+	}
 
 	var initJQuery : function() {
 		var jq = window.jQuery;
@@ -148,7 +148,7 @@ jQueryBookmarklet = function() {
 		jq(tag).remove();
 		log('info', 'jQuery %v loaded', jq.fn.jquery);
 		execLoadedCallback(jq);
-	},
+	}
 
 	var execLoadedCallback : function(jq) {
 		log('groupEnd');
