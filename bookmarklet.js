@@ -166,4 +166,4 @@ jQueryBookmarklet = function() {
 	};
 }();
 
-jQueryBookmarklet.init("1.4.2", function(jq) { console.log(jq); alert('hello world'); });
+jQueryBookmarklet.init("1.4.2", function(jq) { debugger; console.log(jq); alert('hello world'); });
