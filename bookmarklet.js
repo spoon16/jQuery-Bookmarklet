@@ -155,7 +155,7 @@ jQueryBookmarklet = function() {
 	};
 
 	return {
-		$,
+		$: null,
 		init: function(version, loadedCallback) {
 			callback = function(jq){
 				this.$ = jq;
