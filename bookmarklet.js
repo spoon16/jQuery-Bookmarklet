@@ -152,5 +152,3 @@ jQueryBookmarklet = function() {
 		}
 	};
 }();
-
-jQueryBookmarklet.init("1.4.2", __initBookmarklet);
