@@ -112,7 +112,7 @@ jQueryBookmarklet = function() {
 				}
 			}
 		}
-	}
+	};
 
 	var ensurejQuery : function(version) {
 		log('group', 'ensure jQuery');
@@ -140,7 +140,7 @@ jQueryBookmarklet = function() {
 			log('info', 'jQuery %v found', jq.fn.jquery);
 			execLoadedCallback(jq);
 		}
-	}
+	};
 
 	var initJQuery : function() {
 		var jq = window.jQuery;
@@ -148,12 +148,12 @@ jQueryBookmarklet = function() {
 		jq(tag).remove();
 		log('info', 'jQuery %v loaded', jq.fn.jquery);
 		execLoadedCallback(jq);
-	}
+	};
 
 	var execLoadedCallback : function(jq) {
 		log('groupEnd');
 		callback(jq);
-	}
+	};
 
 	return {
 		$,
@@ -164,7 +164,7 @@ jQueryBookmarklet = function() {
 			};
 			ensurejQuery(version);
 		}
-	}
+	};
 }
 
 jQueryBookmarklet.init("1.4.2", function(jq) { alert('hello world'); });
