@@ -101,7 +101,6 @@ jQueryBookmarklet = function() {
 	};
 
 	var ensurejQuery = function(version) {
-		debugger;
 		log('group', 'ensure jQuery');
 		if (!window.jQuery
 			|| version > window.jQuery.fn.jquery) {
@@ -145,11 +144,17 @@ jQueryBookmarklet = function() {
 	return {
 		$: null,
 		init: function(version, loadedCallback) {
-			callback = function(jq){
-				jQueryBookmarklet.$ = jq;
-				loadedCallback(jQueryBookmarklet.$);
-			};
-			ensurejQuery(version);
+			debugger;
+			if(this.$) {
+				loadedCallback(this.$);
+			}
+			else {
+				callback = function(jq){
+					jQueryBookmarklet.$ = jq;
+					loadedCallback(jQueryBookmarklet.$);
+				};
+				ensurejQuery(version);
+			}
 		}
 	};
 }();
