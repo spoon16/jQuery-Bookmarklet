@@ -158,9 +158,8 @@ jQueryBookmarklet = function() {
 		$: null,
 		init: function(version, loadedCallback) {
 			callback = function(jq){
-				debugger;
-				this.$ = jq;
-				loadedCallback(this.$);
+				jQueryBookmarklet.$ = jq;
+				loadedCallback(jQueryBookmarklet.$);
 			};
 			ensurejQuery(version);
 		}
