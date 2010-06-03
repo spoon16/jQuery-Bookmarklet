@@ -114,7 +114,7 @@ jQueryBookmarklet = function() {
 		}
 	};
 
-	var ensurejQuery : function(version) {
+	var ensurejQuery = function(version) {
 		log('group', 'ensure jQuery');
 		if (!window.jQuery
 			|| version > window.jQuery.fn.jquery) {
@@ -142,7 +142,7 @@ jQueryBookmarklet = function() {
 		}
 	};
 
-	var initJQuery : function() {
+	var initJQuery = function() {
 		var jq = window.jQuery;
 		jq.noConflict(true);
 		jq(tag).remove();
@@ -150,7 +150,7 @@ jQueryBookmarklet = function() {
 		execLoadedCallback(jq);
 	};
 
-	var execLoadedCallback : function(jq) {
+	var execLoadedCallback = function(jq) {
 		log('groupEnd');
 		callback(jq);
 	};
