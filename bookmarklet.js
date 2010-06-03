@@ -101,6 +101,7 @@ jQueryBookmarklet = function() {
 	};
 
 	var ensurejQuery = function(version) {
+		debugger;
 		log('group', 'ensure jQuery');
 		if (!window.jQuery
 			|| version > window.jQuery.fn.jquery) {
