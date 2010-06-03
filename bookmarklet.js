@@ -97,8 +97,7 @@ function __initBookmarklet() {
 }
 
 jQueryBookmarklet = function() {
-	var callback;
-	var tag;
+	var callback, tag;
 		
 	var log = function() {
 		if (typeof (console) != 'undefined') {
@@ -165,6 +164,6 @@ jQueryBookmarklet = function() {
 			ensurejQuery(version);
 		}
 	};
-}
+}();
 
 jQueryBookmarklet.init("1.4.2", function(jq) { alert('hello world'); });
