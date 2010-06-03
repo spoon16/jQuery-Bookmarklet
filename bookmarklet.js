@@ -14,7 +14,7 @@ function __buildForm($, f) {
 
 	f.submit();
 
-	__watchForCommands();
+	__watchForCommands($);
 }
 
 function __watchForCommands($) {
