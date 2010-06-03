@@ -144,7 +144,6 @@ jQueryBookmarklet = function() {
 	return {
 		$: null,
 		init: function(version, loadedCallback) {
-			debugger;
 			if(this.$) {
 				loadedCallback(this.$);
 			}
