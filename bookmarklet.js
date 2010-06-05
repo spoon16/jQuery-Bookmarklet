@@ -74,7 +74,7 @@ function __initBookmarklet($) {
 				.append(
 					form
 						.attr('method', 'get')
-						.attr('action', __rootUrl + '/jQuery-Bookmarklet/bookmarklet.html') // __rootUrl is defined in the bookmarklet
+						.attr('action', __rootUrl + __postUrl) // __rootUrl and __postUrl are defined in the bookmarklet
 						.attr('target', __frameName)
 				)
 		);
