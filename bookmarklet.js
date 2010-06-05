@@ -74,7 +74,7 @@ function __initBookmarklet($) {
 				.append(
 					form
 						.attr('method', 'get')
-						.attr('action', __rootUrl + __postUrl) // __rootUrl and __postUrl are defined in the bookmarklet
+						.attr('action', __postPath) // __postPath is defined in the bookmarklet
 						.attr('target', __frameName)
 				)
 		);

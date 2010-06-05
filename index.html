@@ -13,16 +13,15 @@
 		//
 		// change these values
 		//
-		var domain = 'dev.ericscho.me';
-		var scriptPath = '/jQuery-Bookmarklet/bookmarklet.js';
-		var postPath = '/jQuery-Bookmarklet/bookmarklet.html';
+		var scriptPath = 'http://github.com/spoon16/jQuery-Bookmarklet/raw/master/bookmarklet.js';
+		var postPath = 'http://spoon16.github.com/jQuery-Bookmarklet/bookmarklet.html';
 		var minVersion = '1.4.2';
 		var initFunction = '__initBookmarklet';
 
 		//
 		// the script that is executed when the bookmarklet is clicked
 		//
-		var bookmarklet = "javascript:function%20__i(){jQueryBookmarklet.init('" + minVersion + "'," + initFunction + ");};(function(__u,__r){var%20__d=document,__b=__d.body;__rootUrl=__d.location.protocol+'//'+__u;__postUrl='" + postPath + "';try{if(!__b)throw(0);if(typeof(jQueryBookmarklet)!='undefined'){__i();}else{var%20__s=__d.createElement('script');__s.type='text/javascript';__s.src=__rootUrl+__r;__s.onload=__s.onreadystatechange=function(){if(__s.readyState||__s.readyState=='loaded'||__s.readyState=='complete'){__s.onreadystatechange=null;__i();}else{__i();}};__d.getElementsByTagName('head')[0].appendChild(__s);}}catch(e){alert('Wait%20till%20page%20has%20loaded%20and%20try%20again')}})('" + domain + "', '" + scriptPath + "?'+Math.round(Math.random()*10000000));";
+		var bookmarklet = "javascript:function%20__i(){jQueryBookmarklet.init('" + minVersion + "'," + initFunction + ");};(function(__u){var%20__d=document,__b=__d.body;__scriptPath=__u;__postPath='" + postPath + "';try{if(!__b)throw(0);if(typeof(jQueryBookmarklet)!='undefined'){__i();}else{var%20__s=__d.createElement('script');__s.type='text/javascript';__s.src=__scriptPath;__s.onload=__s.onreadystatechange=function(){if(__s.readyState||__s.readyState=='loaded'||__s.readyState=='complete'){__s.onreadystatechange=null;__i();}else{__i();}};__d.getElementsByTagName('head')[0].appendChild(__s);}}catch(e){alert('Wait%20till%20page%20has%20loaded%20and%20try%20again')}})('" + scriptPath + "?'+Math.round(Math.random()*10000000));";
 
 		//
 		// set bookmarklet href value
